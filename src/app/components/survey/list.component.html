@@ -8,9 +8,9 @@
         <h1>{{ title }}</h1>
         <br>
         <div>
-            <a routerLink="/inventory/add" class="btn btn-primary align-self-end" role="button">
+            <a routerLink="/survey/add" class="btn btn-primary align-self-end" role="button">
                 <i class="fas fa-plus-circle"></i> 
-                Add a new Item
+                Add a new item
             </a>                             
         </div>
 
@@ -18,19 +18,45 @@
             <table class="table table-bordered table-striped table-hover">
                 <!-- Header Row-->
                 <tr>
-                    <th class="text-center">Item</th>
-                    <th class="text-center">Qty</th>
-                    <th class="text-center">Status</th>
-                    <th>Size</th>
-                    <th class="text-center">Tags</th>
+                    <th class="text-center">Survey Title</th>
+                    <th class="text-center">Start Date</th>
+                    <th class="text-center">End Date</th>      
+                    <th class="text-center">Survey Results</th>      
                     <th class="text-center" colspan="2">Actions</th>
                 </tr>
 
                 <!-- Repeatable Template Row -->
 
-                <!-- <% for(let count = 0; count < InventoryList.length; count++) { %> -->
+                <!-- <% for(let count = 0; count < SurveyList.length; count++) { %> -->
                     <!-- <tr> -->
-                    <tr *ngFor="let item of inventoryList">
+                    <tr *ngFor="let item of surveyList">
+
+                        <td class="text-center">
+                            <a [routerLink]="['/survey/survey-questions/', item._id]">
+                                <strong>{{ item.title }}</strong>
+                            </a>
+                        </td>
+                        <td class="text-center">{{ item.startdate.toLocaleDateString() }}</td>
+                        <td class="text-center">{{ item.enddate.toLocaleDateString() }}</td>
+                        
+                        <td class="text-center">
+                            <a [routerLink]="['/survey/report/', item._id]">
+                                view survey result
+                            </a>
+                        </td>
+
+
+                        <td class="text-center">
+                            <button [routerLink]="['/survey/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
+                                <i class="fas fa-pencil-alt" ></i></button>
+                        </td>
+                        <td class="text-center">
+                            <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
+                                <i class="fas fa-trash-alt"></i></a>
+                        </td>
+
+
+                        <!--
                         <td class="text-center"> {{ item.item }} </td>
                         <td class="text-center"> {{ item.qty }} </td>
                         <td class="text-center"> {{ item.status }} </td>
@@ -41,13 +67,16 @@
                         </td>
                         <td class="text-center">{{ item.tags }}</td>
                         <td class="text-center">
-                            <button [routerLink]="['/inventory/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
+                            <button [routerLink]="['/survey/edit/', item._id]" class="btn bg-primary btn-primary btn-sm">
                                 <i class="fas fa-pencil-alt" ></i></button>
                         </td>
                         <td class="text-center">
                             <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i></a>
                         </td>
+
+                        -->
+
                     </tr> 
                 <!-- <% } %> -->
             </table>

@@ -1,7 +1,8 @@
 import { Component } from "@angular/core";
 import { NgForm } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
-import { Survey, Size } from "../../models/survey.model";
+//import { Survey, Size } from "../../models/survey.model";
+import { Survey } from "../../models/survey.model";
 import { SurveyRepository } from "../../models/survey.repository";
 
 @Component({
@@ -11,7 +12,7 @@ import { SurveyRepository } from "../../models/survey.repository";
 
 export class AddEditComponent {
     
-    title:string = 'Add a new Item';
+    title: string = 'Add a new Item';
     editing: boolean = false;
     item: Survey = new Survey();
 
@@ -29,7 +30,7 @@ export class AddEditComponent {
             this.item = repository.getItem(activeRoute.snapshot.params["id"]);
         } 
         else {
-            this.item.size = new Size();
+            //this.item.size = new Size();
         }        
     }
 

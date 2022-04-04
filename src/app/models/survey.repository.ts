@@ -1,36 +1,36 @@
 import { Injectable } from "@angular/core";
-import { Inventory } from "./survey.model";
+import { Survey } from "./survey.model";
 import { RestDataSource } from "./rest.datasource";
 import { ResponseModel } from "./response.model";
 
 @Injectable()
-export class InventoryRepository {
+export class SurveyRepository {
 
-    private inventory: Inventory[] = [];
+    private survey: Survey[] = [];
 
     constructor(private dataSource: RestDataSource) {
-        dataSource.getInventoryList().subscribe(data => {
-            this.inventory = data;
+        dataSource.getSurveyList().subscribe(data => {
+            this.survey = data;
         });
     }
 
-    getInventory(): Inventory[] {
-        return this.inventory;
+    getSurvey(): Survey[] {
+        return this.survey;
     }
 
-    getItem(id: string): Inventory {
-        return (this.inventory.find(item => item._id === id)!);
+    getItem(id: string): Survey {
+        return (this.survey.find(item => item._id === id)!);
     }
 
-    async saveInventory(item: Inventory) {
+    async saveSurvey(item: Survey) {
 
         // Add
         if (item._id == null || item._id == "") {
-            this.dataSource.insertInventory(item)
+            this.dataSource.insertSurvey(item)
                 .subscribe(response => {
                     if(response._id) // If API created
                     {
-                        this.inventory.push(response);
+                        this.survey.push(response);
                     }
                     else{ // If API send error.
                         // Convert to ResponseModel to get the error message.
@@ -41,10 +41,10 @@ export class InventoryRepository {
         }
         // Edit 
         else {
-            this.dataSource.updateInventory(item).subscribe(response => {
+            this.dataSource.updateSurvey(item).subscribe(response => {
                 if (response.success) {
-                    this.inventory.splice(
-                        this.inventory.findIndex(i => i._id == item._id), 
+                    this.survey.splice(
+                        this.survey.findIndex(i => i._id == item._id), 
                         1, 
                         item
                     );
@@ -56,11 +56,11 @@ export class InventoryRepository {
         }
     }
 
-    deleteInventory(id: string) {
-        this.dataSource.deleteInventory(id).subscribe(response => {
+    deleteSurvey(id: string) {
+        this.dataSource.deleteSurvey(id).subscribe(response => {
             if (response.success) {
-                this.inventory.splice(
-                    this.inventory.findIndex(item => item._id == id), 
+                this.survey.splice(
+                    this.survey.findIndex(item => item._id == id), 
                     1
                 );                                
             }

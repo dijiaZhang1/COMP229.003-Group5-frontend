@@ -1,17 +1,19 @@
-export class Inventory {
+export class Survey {
     
     constructor(
         public _id?: string,
-        public item?: string,
-        public qty?: number,
-        public tags?: string[],
-        public status?: string,
-        public size?: Size
+        public title?: string,
+        public type?: string,
+        public startdate?: Date,
+        public enddate?: Date,
+        public username?: string,
+        public question?: string[]
     ){
     }
 
 }
 
+/*
 export class Size {
 
     constructor(
@@ -21,3 +23,4 @@ export class Size {
     ){}
 
 }
+*/

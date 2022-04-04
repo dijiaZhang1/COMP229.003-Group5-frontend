@@ -13,82 +13,86 @@
                         name="id"
                         [(ngModel)]="item._id"
                     >
-                    <label for="itemTextField">Item Name</label>
+                    <label for="nameTextField">Title</label>
                     <input type="text" class="form-control"
-                        id="itemTextField"
-                        placeholder="Enter the Item Name"
-                        name="item" 
-                        [(ngModel)]="item.item"
+                        id="nameTextField"
+                        placeholder="Enter the Survey title"
+                        name="title" 
+                        [(ngModel)]="item.title"
                         required>
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="QtyTextField">Quantity</label>
-                    <input type="number" class="form-control"
-                    id="QtyTextField"
-                    placeholder="00"
-                    name="qty" 
-                    [(ngModel)]="item.qty"
-                    required>
+                    <label for="startdateTextField">Survey Start Date</label>
+                    <input type="date" class="form-control"
+                        id="startdateTextField"
+                        placeholder="Enter survey start date"
+                        name="startdate" 
+                        [(ngModel)]="item.startdate"
+                        required>
                 </div>
                 <br />
                 <div class="form-group">
-                    <label for="statusTextField">Status</label>
+                    <label for="enddateTextField">Survey End Date</label>
+                    <input type="date" class="form-control"
+                        id="enddateTextField"
+                        placeholder="Enter survey end date"
+                        name="enddate" 
+                        [(ngModel)]="item.enddate"
+                        >
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="q1TextField">Question #1</label>
                     <input type="text" class="form-control"
-                    id="statusTextField"
-                    placeholder="Enter a status"
-                    name="status" 
-                    [(ngModel)]="item.status"
-                    >
-                </div>
-                <br />
-                <div class="card">
-                    <div class="card-header">Size</div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="hightTextField">Hight</label>
-                            <input type="number" step="0.01" 
-                            class="form-control"
-                            id="hightTextField"
-                            placeholder="0.00"
-                            name="size_h" 
-                            [(ngModel)]="item.size.h"
-                            required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="widthTextField">Width</label>
-                            <input type="number" step="0.01"
-                            class="form-control"
-                            id="widthTextField"
-                            placeholder="0.00"
-                            name="size_w" 
-                            [(ngModel)]="item.size.w"
-                            required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="uomTextField">UOM</label>
-                            <input type="text" class="form-control"
-                            id="uomTextField"
-                            placeholder="cm"
-                            name="size_uom" 
-                            [(ngModel)]="item.size.uom"
-                            required>
-                        </div>
-                    </div>                    
-                </div>                
-                <br />
-                <div class="form-group">
-                    <label for="tagTextArea">Tags <span class="text-muted">[use , to separate tags]</span></label>
-                    <textarea type="text" class="form-control"
-                    id="tagTextArea"
-                    placeholder="Enter the tags of the item"
-                    name="tags" 
-                    [(ngModel)]="item.tags">                    
-                    </textarea>
+                        id="q1TextField"
+                        placeholder="Enter Question #1"
+                        name="q1" 
+                        [(ngModel)]="item.question[0]"
+                        required>
                 </div>
                 <br/>
+                <div class="form-group">
+                    <label for="q2TextField">Question #2</label>
+                    <input type="text" class="form-control"
+                        id="q2TextField"
+                        placeholder="Enter Question #2"
+                        name="q2" 
+                        [(ngModel)]="item.question[1]"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="q3TextField">Question #3</label>
+                    <input type="text" class="form-control"
+                        id="q3TextField"
+                        placeholder="Enter Question #3"
+                        name="q3" 
+                        [(ngModel)]="item.question[2]"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="q4TextField">Question #4</label>
+                    <input type="text" class="form-control"
+                        id="q4TextField"
+                        placeholder="Enter Question #4"
+                        name="q4" 
+                        [(ngModel)]="item.question[3]"
+                        required>
+                </div>
+                <br />
+                <div class="form-group">
+                    <label for="q5TextField">Question #5</label>
+                    <input type="text" class="form-control"
+                        id="q5TextField"
+                        placeholder="Enter Question #5"
+                        name="q5" 
+                        [(ngModel)]="item.question[4]"
+                        required>
+                </div>
+                <br />
+
 
                 <button class="btn btn-primary" type="submit">
                     <i class="fas fa-edit"></i> 

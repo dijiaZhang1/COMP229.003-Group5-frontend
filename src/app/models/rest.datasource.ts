@@ -3,12 +3,12 @@ import { HttpClient } from "@angular/common/http";
 import { Observable, of } from "rxjs";
 import { map, catchError } from "rxjs/operators";
 import { HttpHeaders } from '@angular/common/http';
-import { Inventory } from "./survey.model";
+import { Survey } from "./survey.model";
 import { ResponseModel } from "./response.model";
 import { User } from "./user.model";
 
 const PROTOCOL = "http";
-const PORT = 3000;
+const PORT = 5003;
 
 @Injectable()
 export class RestDataSource {
@@ -20,14 +20,14 @@ export class RestDataSource {
         this.baseUrl = `${PROTOCOL}://${location.hostname}:${PORT}/`;
     }
 
-    getInventoryList(): Observable<Inventory[]> {
-        return this.http.get<Inventory[]>(this.baseUrl + "inventory/list");
+    getSurveyList(): Observable<Survey[]> {
+        return this.http.get<Survey[]>(this.baseUrl + "survey/list");
     }
 
-    // Consumes Inventory endpoints of the Backend
-    insertInventory(item: Inventory): Observable<Inventory> {
-        return this.http.post<Inventory>(
-            this.baseUrl + "inventory/add",
+    // Consumes Survey endpoints of the Backend
+    insertSurvey(item: Survey): Observable<Survey> {
+        return this.http.post<Survey>(
+            this.baseUrl + "survey/add",
             item, 
             this.getOptions())
                 .pipe(
@@ -41,9 +41,9 @@ export class RestDataSource {
                 );
     }
 
-    updateInventory(item: Inventory): Observable<ResponseModel> {
+    updateSurvey(item: Survey): Observable<ResponseModel> {
         return this.http.put<ResponseModel>(
-            `${this.baseUrl}inventory/edit/${item._id}`,
+            `${this.baseUrl}survey/edit/${item._id}`,
             item, 
             this.getOptions())
                 .pipe(
@@ -54,9 +54,9 @@ export class RestDataSource {
                 );
     }
 
-    deleteInventory(id: string): Observable<ResponseModel> {
+    deleteSurvey(id: string): Observable<ResponseModel> {
         return this.http.delete<ResponseModel>(
-            `${this.baseUrl}inventory/delete/${id}`,
+            `${this.baseUrl}survey/delete/${id}`,
             this.getOptions())
                 .pipe(
                     map(response => {

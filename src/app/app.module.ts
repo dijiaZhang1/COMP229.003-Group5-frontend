@@ -4,7 +4,7 @@ import { RouterModule } from "@angular/router";
 import { AppComponent } from './app.component';
 
 import { IndexModule } from './components/index.module';
-import { InventoryModule } from "./components/survey/survey.module";
+import { SurveyModule } from "./components/survey/survey.module";
 
 import { IndexComponent } from './components/index.component';
 import { ListComponent } from './components/survey/list.component';
@@ -22,13 +22,13 @@ import { AuthGuard } from "./components/auth/auth.guard";
   imports: [
     BrowserModule,
     IndexModule,
-    InventoryModule,
+    SurveyModule,
     AuthModule,
     RouterModule.forRoot([
       { path: "", component: IndexComponent },
-      { path: "inventory/list", component: ListComponent },
-      { path: "inventory/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
-      { path: "inventory/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
+      { path: "survey/list", component: ListComponent },
+      { path: "survey/:mode", component: AddEditComponent, canActivate: [AuthGuard]},
+      { path: "survey/:mode/:id", component: AddEditComponent, canActivate: [AuthGuard] },
       { path: "users/signup", component: SignUpComponent },
       { path: "users/signin", component: SignInComponent },
       { path: "**", redirectTo: "" }
