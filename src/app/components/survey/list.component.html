@@ -29,6 +29,7 @@
 
                 <!-- <% for(let count = 0; count < SurveyList.length; count++) { %> -->
                     <!-- <tr> -->
+                    <!--<tr *ngFor="let item of dataSource"> -->
                     <tr *ngFor="let item of surveyList">
 
                         <td class="text-center">
@@ -36,8 +37,8 @@
                                 <strong>{{ item.title }}</strong>
                             </a>
                         </td>
-                        <td class="text-center">{{ item.startdate.toLocaleDateString() }}</td>
-                        <td class="text-center">{{ item.enddate.toLocaleDateString() }}</td>
+                        <td class="text-center">{{ item.startdate }}</td>
+                        <td class="text-center">{{ item.enddate }}</td> 
                         
                         <td class="text-center">
                             <a [routerLink]="['/survey/report/', item._id]">
@@ -53,7 +54,7 @@
                         <td class="text-center">
                             <a (click)="deleteMethod(item._id)" class="btn bg-danger btn-danger btn-sm">
                                 <i class="fas fa-trash-alt"></i></a>
-                        </td>
+                        </td> 
 
 
                         <!--
