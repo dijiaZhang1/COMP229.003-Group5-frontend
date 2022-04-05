@@ -13,14 +13,3 @@ export class Survey {
 
 }
 
-/*
-export class Size {
-
-    constructor(
-        public h?: number,
-        public w?: number,
-        public uom?: string
-    ){}
-
-}
-*/
